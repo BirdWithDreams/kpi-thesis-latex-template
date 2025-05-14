@@ -1,0 +1,79 @@
+\documentclass[
+14pt,
+candidate, % document type
+subf, % use and configure subfig package for nested figure numbering
+]{article}
+\input{preamble}
+
+\begin{document}
+
+
+% Титульний аркуш
+\input{title/title}
+
+% Завдання
+\input{title/task}
+
+% Реферат
+\newpage
+\input{title/abstract}
+
+
+% Зміст
+\tableofcontents
+
+\newpage
+
+% Перелік умовних позначень
+% \section*{Перелік умовних позначень, скорочень і термінів}
+% \addcontentsline{toc}{section}{Перелік умовних позначень, скорочень і термінів}
+% ...
+
+% Вступ
+\input{chapters/intro}
+...
+
+% Основна частина
+\section{Introduction}
+
+Оптимізація кольорової палітри є важливою задачею в сучасній обробці
+зображень, яка знаходить застосування у різних галузях, таких як комп'ютерна
+графіка, цифрова фотографія, медична візуалізація, геоінформаційні системи, а
+також у розробці інтерфейсів користувача для пристроїв з обмеженими
+ресурсами. У зв'язку з швидким розвитком технологій та зростанням кількості
+цифрових зображень, потреба у ефективних методах оптимізації кольорової
+палітри стає все більш актуальною.
+
+\subsection{Motivation}
+
+\cite{linal}
+
+\subsubsection{Details}
+
+\subsubsection{Details}
+
+\subsection{Analysis}
+
+...
+
+\newpage
+
+% Висновки
+\section*{Висновки}
+\addcontentsline{toc}{section}{Висновки}
+
+\newpage
+
+% Список використаних джерел
+\bibliographystyle{apacite}
+\bibliography{mybib}
+
+\newpage
+
+% Додатки
+\appendix
+\section*{Додаток А}
+\addcontentsline{toc}{section}{Додаток А}
+...
+
+\end{document}

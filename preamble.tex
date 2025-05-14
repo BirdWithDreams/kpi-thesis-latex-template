@@ -1,0 +1,160 @@
+% ------------------- Language and Encoding -------------------
+\usepackage[T2A]{fontenc}             % Font encoding for Cyrillic (T2A is needed for Ukrainian)
+\usepackage[utf8]{inputenc}          % UTF-8 input encoding
+\usepackage[english, ukrainian]{babel}        % Language-specific rules (e.g., hyphenation, captions)
+
+% ------------------- Page Layout and Graphics -------------------
+\usepackage[left=3cm, right=1.5cm, top=2cm, bottom=2cm]{geometry} % Set page margins
+\usepackage{graphicx}                % Include images (JPG, PNG, PDF)
+\usepackage{pdfpages}                % Insert external PDF pages
+\usepackage[fontsize=14pt]{fontsize}
+
+% ------------------- Tables -------------------
+\usepackage{array} % расширенные возможности для работы с таблицами
+\usepackage{tabularx} % автоматический подбор ширины столбцов
+\usepackage{dcolumn} % выравнивание чисел по разделителю
+
+% ------------------- Mathematics -------------------
+\usepackage{bm}                      % Bold math symbols
+\usepackage{amsmath}                % Advanced math formatting
+\usepackage{amssymb}                % Additional math symbols
+
+% ------------------- Citations and Hyperlinks -------------------
+\usepackage{cite}                   % Improved citation handling
+\usepackage{hyperref}               % Make references/citations clickable
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black, % Make TOC links black
+  urlcolor=black,
+  citecolor=black
+}
+
+% ------------------- Miscellaneous Features -------------------
+\usepackage{color}                  % Define and use custom colors
+\usepackage{multirow}               % Merge rows in tables
+\usepackage{afterpage}             % Defer content until after the current page
+\usepackage[font={normal}]{caption} % Customize figure/table captions
+\captionsetup[figure]{format=hang,labelsep=period} % Figure caption formatting
+\captionsetup[table]{format=hang,labelsep=period}  % Table caption formatting
+
+\usepackage[onehalfspacing]{setspace} % Set 1.5 line spacing for better readability
+
+\usepackage{xcolor}
+\definecolor{wordgray}{gray}{0.5}  % Adjust the 0.5 for lighter/darker gray
+
+\usepackage{fancyhdr}               % Custom headers/footers
+\pagestyle{fancy}
+\fancyhf{}                          % Clear all header/footer fields
+\fancyhead[R]{\textcolor{wordgray}{\normalsize{\thepage}}}             % Page number centered in footer
+\renewcommand{\headrulewidth}{0pt}  % Remove top header line
+
+\usepackage{listings}               % Display source code (e.g., C++, Python)
+
+% ------------------- Custom Column Type -------------------
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp} % Ensure \\ works in custom cells
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}     % Define centered column of width #1
+
+% ------------------- Document Structure -------------------
+\setcounter{tocdepth}{2}            % Table of contents includes up to subsections
+\graphicspath{{images/}}            % Set image search path to "images/" folder
+
+% ------------------- Figures and Diagrams -------------------
+\usepackage{float}                  % More precise figure/table placement
+\usepackage{pgfplots}               % Create high-quality plots
+\pgfplotsset{compat=newest}         % Enable newest features of pgfplots
+\usetikzlibrary{positioning,arrows.meta} % TikZ libraries for layout and arrows
+\tikzset{
+  dot/.style = {                    % Style for small filled circles
+    circle, fill,
+    minimum size=#1,
+    inner sep=0pt, outer sep=0pt
+  },
+  dot/.default = 5pt                % Default dot size
+}
+\usepackage{forest}                 % Draw trees and hierarchical diagrams
+
+% ------------------- APA-style bibliography -------------------
+\usepackage{apacite}
+
+% ------------------- table of content stylization -------------------
+\usepackage{tocloft}
+\usepackage{etoolbox}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\providecommand{\contentsname}{ЗМІСТ}
+
+\makeatletter
+\renewcommand{\tableofcontents}{%
+  % \cleardoublepage
+  % \thispagestyle{fancy}
+  \section*{\MakeUppercase \tableofcontents}
+  \vspace{10em}
+  \@starttoc{toc}
+}{}{}
+\makeatother
+
+% Depth of TOC (to include subsubsection)
+\setcounter{tocdepth}{3}
+
+% Indentation for section levels
+\cftsetindents{section}{0em}{2em}
+\cftsetindents{subsection}{2em}{3em}
+\cftsetindents{subsubsection}{4em}{4em}
+
+% Page number alignment and dots
+\renewcommand{\cftdotsep}{1} % Controls dot spacing
+\renewcommand{\cftsecdotsep}{1}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsubsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+\renewcommand{\cftsubsubsecpagefont}{\normalfont}
+
+% Optional: page number alignment (if needed more space)
+\renewcommand{\cftsecnumwidth}{5.2em}
+% \renewcommand{\cftsubsecnumwidth}{4em}
+% \renewcommand{\cftsubsubsecnumwidth}{5em}
+
+% ------------------- Section formatting -------------------
+\usepackage{titlesec}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+
+% --- Оформлення розділів (18 pt, жирним, прописними) ---
+\titleformat{\section}
+  [block]
+  {\centering\bfseries\fontsize{18pt}{20pt}\selectfont\MakeUppercase}
+  {\thesection}
+  {1em}
+  {}
+
+\titlespacing*{\section}{0pt}{2em plus 1ex minus 0.2ex}{2em plus 1ex}
+
+% --- Оформлення підрозділів (16 pt, жирним) ---
+\titleformat{\subsection}
+  [block]
+  {\bfseries\fontsize{16pt}{18pt}\selectfont}
+  {\thesubsection}
+  {1em}
+  {}
+
+\titlespacing*{\subsection}{\parindent}{2em plus 1ex minus 0.2ex}{2em plus 1ex}
+
+% --- Оформлення пунктів (14 pt, курсив) ---
+\setcounter{secnumdepth}{3}
+
+\titleformat{\subsubsection}
+  [block]
+  {\itshape\fontsize{14pt}{16pt}\selectfont}
+  {\thesubsubsection}
+  {1em}
+  {}
+
+\titlespacing*{\subsubsection}{\parindent}{2em plus 1ex minus 0.2ex}{2em plus 0.5ex}
+
+% --- Нумерація ---
+\renewcommand{\thesection}{РОЗДІЛ \arabic{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
