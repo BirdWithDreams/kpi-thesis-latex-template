@@ -74,7 +74,7 @@
 \usepackage{forest}                 % Draw trees and hierarchical diagrams
 
 % ------------------- APA-style bibliography -------------------
-\usepackage{apacite}
+% \usepackage{apacite}
 
 % ------------------- table of content stylization -------------------
 \usepackage{tocloft}
@@ -86,7 +86,7 @@
 \renewcommand{\tableofcontents}{%
   % \cleardoublepage
   % \thispagestyle{fancy}
-  \section*{\MakeUppercase \tableofcontents}
+  \section*{\tableofcontents}
   \vspace{10em}
   \@starttoc{toc}
 }{}{}
@@ -103,7 +103,7 @@
 % Page number alignment and dots
 \renewcommand{\cftdotsep}{1} % Controls dot spacing
 \renewcommand{\cftsecdotsep}{1}
-\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsecfont}{\MakeUppercase}
 \renewcommand{\cftsubsecfont}{\normalfont}
 \renewcommand{\cftsubsubsecfont}{\normalfont}
 \renewcommand{\cftsecpagefont}{\normalfont}
@@ -125,10 +125,10 @@
 % --- Оформлення розділів (18 pt, жирним, прописними) ---
 \titleformat{\section}
   [block]
-  {\centering\bfseries\fontsize{18pt}{20pt}\selectfont\MakeUppercase}
+  {\centering\bfseries\fontsize{18pt}{20pt}\selectfont}
   {\thesection}
   {1em}
-  {}
+  {\MakeUppercase}
 
 \titlespacing*{\section}{0pt}{2em plus 1ex minus 0.2ex}{2em plus 1ex}
 
@@ -158,3 +158,13 @@
 \renewcommand{\thesection}{РОЗДІЛ \arabic{section}}
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+
+
+\def\thebibliography#1{\section*{Перелік посилань}\eightpt\list
+ {\arabic{enumi}.}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+ \advance\leftmargin\labelsep
+ \usecounter{enumi}}
+ \def\newblock{\hskip .11em plus .33em minus .07em}
+ \sloppy\clubpenalty4000\widowpenalty4000
+ \sfcode`\.=1000\relax}
+\let\endthebibliography=\endlist
